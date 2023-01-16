@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <style>
+         body {
+  font-family: Arial;
+  background-color: hsla(0, 100%, 90%, 0.3);
+  position:static;
+
+}
+
+#wrapper {
+    margin-left:auto;
+    margin-right:auto;
+
+}
+
+* {
+  box-sizing: border-box;
+}
+div {
+	padding-top: 50px;
+	padding-left: 300px;
+	padding-right:100px;
+}
+
+.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 60%;
+  background: #f1f1f1;
+}
+
+.example button {
+  float: left;
+  width: 5%;
+  padding: 10px;
+  background: #FC0000;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+
+}
+
+form.example button:hover {
+  background: #AB0000;
+}
+
+form.form2 button:hover {
+  background: #AB0000;
+}
+
+form.form3 button:hover {
+  background: #AB0000;
+}
+
+.btnDwn{
+  float: left;
+  width: 5%;
+  padding: 10px;
+  background: #FC0000;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+
+}
+.btnShow{
+  float: center;
+  width: 8%;
+  padding: 10px;
+  background: #FC0000;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+
+}
+.ytImage{
+  padding-top: 3%;
+  width:724px;
+}
+
+p{
+   display: none;
+}
+
+
+
+
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Thumbnail downloader</title>
+
+</head>
+<body>
+<div id="wrapper">
+    <form class="example" action="imageUrl" method="get">
+        <h1>Download video Thumbnail</h1>
+        <!--    <input type="text" placeholder="Enter YouTube video URL..." name="imageUrl" >-->
+    </form>
+
+
+    <form class="form2" action="download" method="get">
+        <button id="secondButton" class="btnDwn" type="submit"><i class="fa fa-download" aria-hidden="true"></i>
+        </button>
+    </form>
+
+    <form class="form3" action="show" method="get">
+        <button id="thirdButton" class="btnShow" type="submit">Show</button>
+
+    </form>
+    <p id="par">Check in downloads!</p>
+
+
+    <br/>
+
+    <img id="image" class="ytImage"
+         src="https://pickywallpapers.com/img/2018/10/youtube-red-desktop-wallpaper-526-534-hd-wallpapers.jpg">
+
+    <script>
+    var paragraf = document.getElementById("par");
+    var secondButton = document.getElementById("secondButton");
+
+    secondButton.addEventListener("click", function() {
+
+            paragraf.style.display="block";
+
+    });
+
+
+    </script>
+</div>
+</body>
+</html>
