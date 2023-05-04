@@ -25,8 +25,7 @@ public class IndexController {
     @PostMapping("/getUrl")
     public String getUrl(@ModelAttribute Url url) {
 
-        String videoUrl = url.getUrl();
-
+        String videoUrl = url.toString();
         if (videoUrl.contains("v=")) {
             int index = videoUrl.indexOf("v=");
             videoID = videoUrl.substring(index + 2, index + 13);
@@ -34,7 +33,6 @@ public class IndexController {
             ytImages = "https://img.youtube.com/vi/vdID/maxresdefault.jpg";
             ytImages = ytImages.replace("vdID", videoID);
         }
-
 
         return "Download";
 
@@ -48,6 +46,12 @@ public class IndexController {
         redirectView.setHttp10Compatible(false);
         return redirectView;
     }
+
+//    @GetMapping("/show")
+//    public String show(@ModelAttribute("url") Url ytImages) {
+//
+//        return "Download";
+//    }
 
 
     @GetMapping("/download")
