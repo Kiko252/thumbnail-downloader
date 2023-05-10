@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html" >
 <head>
     <meta charset="ISO-8859-1">
     <style>
@@ -124,7 +124,7 @@ p{
     <br/>
 
     <img id="image" class="ytImage"
-         src="https://pickywallpapers.com/img/2018/10/youtube-red-desktop-wallpaper-526-534-hd-wallpapers.jpg">
+         th:src="${oUrl.url}" alt="Image">
 
     <script>
     var paragraf = document.getElementById("par");
