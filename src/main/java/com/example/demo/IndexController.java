@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -19,13 +20,17 @@ public class IndexController {
         return "Thumbnail";
     }
 
+    @Autowired
+    Url oUrl;
     String ytImages;
     String videoID;
 
     @PostMapping("/getUrl")
-    public String getUrl(@ModelAttribute Url url) {
+    public String getUrl(@ModelAttribute Url url, Model model) {
 
-        String videoUrl = url.toString();
+
+        String videoUrl = url.getUrl();
+
         if (videoUrl.contains("v=")) {
             int index = videoUrl.indexOf("v=");
             videoID = videoUrl.substring(index + 2, index + 13);
@@ -33,6 +38,8 @@ public class IndexController {
             ytImages = "https://img.youtube.com/vi/vdID/maxresdefault.jpg";
             ytImages = ytImages.replace("vdID", videoID);
         }
+        oUrl.setUrl(ytImages);
+        model.addAttribute("oUrl",oUrl);
 
         return "Download";
 
@@ -41,22 +48,16 @@ public class IndexController {
 
     @GetMapping("/show")
     public RedirectView show() {
-        RedirectView redirectView = new RedirectView(ytImages, true);
+        System.out.println();
+        RedirectView redirectView = new RedirectView(oUrl.getUrl(), true);
         redirectView.setExposeModelAttributes(false);
         redirectView.setHttp10Compatible(false);
         return redirectView;
     }
 
-//    @GetMapping("/show")
-//    public String show(@ModelAttribute("url") Url ytImages) {
-//
-//        return "Download";
-//    }
-// test for GIT
-
 
     @GetMapping("/download")
-    public String downloadImage() throws InterruptedException {
+    public String downloadImage(Model model) throws InterruptedException {
         if (ytImages != null) {
             String home = System.getProperty("user.home");
             String imagePath = home + "/Downloads/thumbnail_" + videoID + ".jpg";
@@ -74,6 +75,8 @@ public class IndexController {
             }
         }
         Thread.sleep(1000);
+
+        model.addAttribute("oUrl",oUrl);
 
         return "Download";
     }
