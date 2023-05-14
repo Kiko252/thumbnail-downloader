@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html" >
 <head>
     <meta charset="ISO-8859-1">
     <style>
@@ -97,20 +97,29 @@ form.form3 button:hover {
 </head>
 <body>
 <div id="wrapper">
-    <form class="example" action="getUrl" method="post">
+    <form class="example" action="showImg" method="post">
         <h1>Download video Thumbnail</h1>
         <input type="text" placeholder="Enter YouTube video URL..." name="url">
         <button id="firstButton" type="submit"><i class="fa fa-search"></i></button>
 
     </form>
 
+    <form th:if="${oUrl.id}" class="form2" action="download" method="get">
+        <button id="secondButton" class="btnDwn" type="submit"><i class="fa fa-download" aria-hidden="true"></i>
+        </button>
+    </form>
+
+
     <br/>
 
+<!--    <img id="image" class="ytImage"-->
+<!--         src="https://pickywallpapers.com/img/2018/10/youtube-red-desktop-wallpaper-526-534-hd-wallpapers.jpg">-->
+
     <img id="image" class="ytImage"
-         src="https://pickywallpapers.com/img/2018/10/youtube-red-desktop-wallpaper-526-534-hd-wallpapers.jpg">
+         th:src="${oUrl.url}" alt="Image">
 
 
-    </script>
+
 </div>
 </body>
 </html>
