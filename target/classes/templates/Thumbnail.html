@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html" >
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html">
 <head>
     <meta charset="ISO-8859-1">
     <style>
@@ -89,6 +89,7 @@ form.form3 button:hover {
 }
 
 
+
     </style>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -98,26 +99,23 @@ form.form3 button:hover {
 <body>
 <div id="wrapper">
     <form class="example" action="showImg" method="post">
-        <h1>Download video Thumbnail</h1>
-        <input type="text" placeholder="Enter YouTube video URL..." name="url">
+        <h1>Download youTube video Thumbnail</h1>
+        <input type="text" placeholder="Enter YouTube video URL..." name="videoUrl">
         <button id="firstButton" type="submit"><i class="fa fa-search"></i></button>
 
     </form>
 
-    <form th:if="${oUrl.id}" class="form2" action="download" method="get">
-        <button id="secondButton" class="btnDwn" type="submit"><i class="fa fa-download" aria-hidden="true"></i>
+    <form th:if="${imgUrl}" class="form2" action="download" method="get">
+        <button id="secondButton" class="btnDwn" type="submit" name="umgUrl"><i class="fa fa-download"
+                                                                                aria-hidden="true"></i>
         </button>
     </form>
 
 
     <br/>
 
-<!--    <img id="image" class="ytImage"-->
-<!--         src="https://pickywallpapers.com/img/2018/10/youtube-red-desktop-wallpaper-526-534-hd-wallpapers.jpg">-->
-
     <img id="image" class="ytImage"
-         th:src="${oUrl.url}" alt="Image">
-
+         th:src="${imgUrl}" alt="Image">
 
 
 </div>
